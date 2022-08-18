@@ -1,7 +1,6 @@
-drop database if exists Testing_System_Assignment_1;
-create database Testing_System_Assignment_1;
-use Testing_System_Assignment_1;
-
+DROP DATABASE IF EXISTS TestingSystem;
+CREATE DATABASE TestingSystem;
+USE TestingSystem;
 DROP TABLE IF EXISTS Department;
 CREATE TABLE Department(
 	DepartmentID TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -13,7 +12,6 @@ CREATE TABLE `Position` (
 	PositionID TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	PositionName ENUM('Dev','Test','Scrum Master','PM') NOT NULL UNIQUE KEY
 );
-
 DROP TABLE IF EXISTS `Account`;
 CREATE TABLE `Account`(
 		AccountID TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -26,68 +24,73 @@ CREATE TABLE `Account`(
 		FOREIGN KEY(DepartmentID) REFERENCES Department(DepartmentID),
 		FOREIGN KEY(PositionID) REFERENCES `Position`(PositionID)
 );
-
 DROP TABLE IF EXISTS `Group`;
-CREATE TABLE `Group` (
-	GroupID		TINYINT UNSIGNED PRIMARY KEY,
-    GroupName	VARCHAR(50),
-    CreatorID	TINYINT UNSIGNED,
-    CreateDate	DATE,
-    FOREIGN KEY(CreatorID) REFERENCES `Account`(AccountID)
+CREATE TABLE `Group`(
+		GroupID TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+		GroupName NVARCHAR(50) NOT NULL UNIQUE KEY,
+		CreatorID TINYINT UNSIGNED,
+		CreateDate DATETIME,
+		FOREIGN KEY(CreatorID) REFERENCES `Account`(AccountId)
 );
-CREATE TABLE GroupAccount (
-	GroupID 	TINYINT UNSIGNED PRIMARY KEY,
-    AccountID	TINYINT UNSIGNED,
-    JoinDate	DATE,
-	FOREIGN KEY(GroupID) REFERENCES `Group`(GroupID),
-    FOREIGN KEY(AccountID) REFERENCES `Account`(AccountID)
+DROP TABLE IF EXISTS GroupAccount;
+CREATE TABLE GroupAccount(
+		GroupID TINYINT UNSIGNED NOT NULL,
+		AccountID TINYINT UNSIGNED NOT NULL,
+		JoinDate DATETIME,
+        PRIMARY KEY (GroupID,AccountID),
+		FOREIGN KEY(GroupID) REFERENCES `Group`(GroupID),
+		FOREIGN KEY(AccountID) REFERENCES `Account`(AccountID)
 );
+DROP TABLE IF EXISTS TypeQuestion;
 CREATE TABLE TypeQuestion (
-	TypeID		TINYINT UNSIGNED PRIMARY KEY,
-    TypeName	VARCHAR(100)
+		TypeID TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+		TypeName ENUM('Essay','Multiple-Choice') NOT NULL UNIQUE KEY
 );
-CREATE TABLE CategoryQuestion (
-	CategoryID		TINYINT UNSIGNED PRIMARY KEY,
-    CategoryName	VARCHAR(100)
+DROP TABLE IF EXISTS CategoryQuestion;
+CREATE TABLE CategoryQuestion(
+		CategoryID TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+		CategoryName NVARCHAR(50) NOT NULL UNIQUE KEY
 );
-CREATE TABLE Question (
-	QuestionID 		TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-    Content			VARCHAR(200),
-    CategoryID		TINYINT UNSIGNED,
-    TypeID			TINYINT UNSIGNED,
-    CreatorID		TINYINT UNSIGNED,
-    CreateDate		DATE,
-    FOREIGN KEY(CategoryID) REFERENCES CategoryQuestion(CategoryID),
-    FOREIGN KEY(CreatorID) REFERENCES `Account`(AccountId),
-    FOREIGN KEY(TypeID) REFERENCES TypeQuestion(TypeID)
+DROP TABLE IF EXISTS Question;
+CREATE TABLE Question(
+		QuestionID TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+		Content NVARCHAR(100) NOT NULL,
+		CategoryID TINYINT UNSIGNED NOT NULL,
+		TypeID TINYINT UNSIGNED NOT NULL,
+		CreatorID TINYINT UNSIGNED NOT NULL,
+		CreateDate DATETIME,
+		FOREIGN KEY(CategoryID) REFERENCES CategoryQuestion(CategoryID),
+		FOREIGN KEY(TypeID) REFERENCES TypeQuestion(TypeID),
+		FOREIGN KEY(CreatorID) REFERENCES `Account`(AccountId)
 );
-CREATE TABLE Answer (
-	AnswerID	TINYINT UNSIGNED PRIMARY KEY,
-    Content		VARCHAR(200),
-    QuestionID	TINYINT UNSIGNED,
-    isCorrect	ENUM('DUNG','SAI'),
-    FOREIGN KEY(QuestionID) REFERENCES Question(QuestionID)
+DROP TABLE IF EXISTS Answer;
+CREATE TABLE Answer(
+		AnswerID TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+		Content NVARCHAR(100) NOT NULL,
+		QuestionID TINYINT UNSIGNED NOT NULL,
+		isCorrect BIT DEFAULT 1,
+		FOREIGN KEY(QuestionID) REFERENCES Question(QuestionID)
 );
-CREATE TABLE Exam (
-	ExamID		TINYINT UNSIGNED PRIMARY KEY,
-    Code		VARCHAR(20),
-    Title		VARCHAR(50),
-    CategoryID	TINYINT UNSIGNED,
-    Duration	TIME,
-    CreatorID	TINYINT UNSIGNED,
-    CreteDate	DATE,
-    FOREIGN KEY(CategoryID) REFERENCES CategoryQuestion(CategoryID),
-	FOREIGN KEY(CreatorID) REFERENCES `Account`(AccountId)
+DROP TABLE IF EXISTS Exam;
+CREATE TABLE Exam(
+		ExamID TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+		`Code` CHAR(10) NOT NULL,
+		Title NVARCHAR(50) NOT NULL,
+		CategoryID TINYINT UNSIGNED NOT NULL,
+		Duration TINYINT UNSIGNED NOT NULL,
+		CreatorID TINYINT UNSIGNED NOT NULL,
+		CreateDate DATETIME,
+FOREIGN KEY(CategoryID) REFERENCES CategoryQuestion(CategoryID),
+FOREIGN KEY(CreatorID) REFERENCES `Account`(AccountId)
 );
-CREATE TABLE ExamQuestion (
-	ExamID		TINYINT UNSIGNED NOT NULL,
-    QuestionID	TINYINT UNSIGNED NOT NULL,
-    FOREIGN KEY(QuestionID) REFERENCES Question(QuestionID),
+DROP TABLE IF EXISTS ExamQuestion;
+CREATE TABLE ExamQuestion(
+	ExamID TINYINT UNSIGNED NOT NULL,
+	QuestionID TINYINT UNSIGNED NOT NULL,
+	FOREIGN KEY(QuestionID) REFERENCES Question(QuestionID),
 	FOREIGN KEY(ExamID) REFERENCES Exam(ExamID) ,
 	PRIMARY KEY (ExamID,QuestionID)
 );
-
--- inserts data
 INSERT INTO Department(DepartmentName)
 VALUES
 		(N'Marketing' ),
@@ -101,11 +104,11 @@ VALUES
 		(N'Thư kí' ),
 		(N'No person' ),
 		(N'Bán hàng' );
-        
+
 INSERT INTO Position (PositionName )
 VALUES ('Dev' ),('Test' ),('Scrum Master'),('PM' );
 
-INSERT INTO `Account`(Email , Username, FullName , DepartmentID , PositionID, CreateDate)
+INSERT INTO Account(Email , Username, FullName , DepartmentID , PositionID,CreateDate)
 VALUES 	('Email1@gmail.com' ,'Username1' ,'Fullname1' , '5' , '1','2020-03-05'),
 		('Email2@gmail.com' ,'Username2' ,'Fullname2' , '1' , '2','2020-03-05'),
 		('Email3@gmail.com' , 'Username3' ,'Fullname3', '2' , '2' ,'2020-03-07'),
@@ -118,8 +121,6 @@ VALUES 	('Email1@gmail.com' ,'Username1' ,'Fullname1' , '5' , '1','2020-03-05'),
 		('Email10@gmail.com' , 'Username10' ,'Fullname10', '10' , '1' ,'2020-04-09'),
 		('Email11@gmail.com' , 'Username11' ,'Fullname11', '10' , '1' , DEFAULT),
 		('Email12@gmail.com' , 'Username12','Fullname12' , '10' , '1' , DEFAULT);
-        
-        
 INSERT INTO `Group` ( GroupName , CreatorID , CreateDate)
 VALUES	(N'Testing System' , 5,'2019-03-05'),
 		(N'Development' , 1,'2020-03-07'),
