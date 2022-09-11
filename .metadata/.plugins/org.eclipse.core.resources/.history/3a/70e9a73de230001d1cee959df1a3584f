@@ -1,0 +1,10 @@
+package Assignment_1;
+
+public class Department {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated meddthod stub
+		System.out.println("Hellddo");
+	}
+
+}

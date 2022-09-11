@@ -1,0 +1,58 @@
+package Assignment_1;
+import java.time.LocalDate;
+
+import javax.sound.midi.Soundbank;
+
+import Assignment_1.position.positionName;
+import Assignment_1.typeQuestion.TypeName;
+
+public class main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub	
+		department dep1 = new department(1, "Sale");
+		department dep2 = new department(2, "Giam doc");
+		department dep3 = new department(3, "Ky thuat");
+		department dep4 = new department(4, "Tai chinh");
+		System.out.println(dep1.toString());
+		System.out.println(dep2.toString());
+		System.out.println(dep3.toString());
+		System.out.println(dep4.toString());
+		
+		position pos1 = new position(1, positionName.DEV);
+		position pos2 = new position(2, positionName.TEST);
+		position pos3 = new position(3, positionName.SECRUM_MASTER);
+		position pos4 = new position(4, positionName.PM);
+		System.out.println(pos1.toString());
+		System.out.println(pos2.toString());
+		System.out.println(pos3.toString());
+		System.out.println(pos4.toString());
+		
+		account acc1 = new account(1, "admin@gmail.com", "Username1", "Fullname1", dep4, pos4, LocalDate.of(2020, 12, 23));
+		account acc2 = new account(2, "Email2@gmail.com", "Username2", "Fullname2", dep1, pos4, LocalDate.now());
+		account acc3 = new account(3, "Email3@gmail.com", "Username2", "Fullname3", dep2, pos3, LocalDate.now());
+		account acc4 = new account(4, "Email4@gmail.com", "Username2", "Fullname4", dep3, pos1, LocalDate.now());
+		System.out.println(acc1.toString());
+		
+		group group1 = new group(1, "Testing System", acc3, LocalDate.now());
+		group group2 = new group(2, "Development", acc1, LocalDate.now());
+		group group3 = new group(3, "VTI Sale 01", acc2, LocalDate.now());
+		group group4 = new group(4, "Management", acc4, LocalDate.now());
+		System.out.println(group1.toString());
+		
+		groupAccount groupAccount1 = new groupAccount(group1, new account[] { acc1, acc2 }, LocalDate.now());
+		groupAccount groupAccount2 = new groupAccount(group2, new account[] { acc1, acc2, acc3 }, LocalDate.now());
+		groupAccount groupAccount3 = new groupAccount(group3, new account[] { acc1, acc3 }, LocalDate.now());
+		groupAccount groupAccount4 = new groupAccount(group4, new account[] { acc1, acc2, acc3, acc4 }, LocalDate.now());
+		System.out.println(groupAccount1.toString());
+		
+		typeQuestion typeQuestion1 = new typeQuestion(1, TypeName.ESSAY);
+		typeQuestion typeQuestion2 = new typeQuestion(2, TypeName.MULTIPLE_CHOICE);
+		System.out.println(typeQuestion1.toString());
+		System.out.println(typeQuestion2.toString());
+		
+		
+		
+	}
+
+}

@@ -1,0 +1,14 @@
+package Assignment_1;
+import java.time.LocalDate;
+import java.util.Arrays;
+public class groupAccount {
+	private group id;
+	protected account[] account;
+	private LocalDate joinDate;
+	public groupAccount(group id, account[] account, LocalDate joinDate) {
+		super();
+		this.id = id;
+		this.account = account;
+		this.joinDate = joinDate;
+	}
+}

@@ -1,0 +1,10 @@
+package ongsao;
+
+public class ChiHang {
+
+	public static void main(String[] args) {
+		System.out.println("Bat Tho");
+
+	}
+
+}

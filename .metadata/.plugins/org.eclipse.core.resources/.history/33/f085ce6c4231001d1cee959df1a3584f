@@ -1,0 +1,30 @@
+package Assignment_1;
+import java.time.LocalDate;
+import Assignment_1.position.positionName;;
+
+public class main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub	
+		department dep1 = new department(1, "Sale");
+		department dep2 = new department(2, "Giam doc");
+		department dep3 = new department(3, "Ky thuat");
+		department dep4 = new department(4, "Tai chinh");
+		System.out.println(dep1.departmentOut());
+		System.out.println(dep2.departmentOut());
+		System.out.println(dep3.departmentOut());
+		System.out.println(dep4.departmentOut());
+		
+		position pos1 = new position(1, positionName.DEV);
+		position pos2 = new position(2, positionName.TEST);
+		position pos3 = new position(3, positionName.SECRUM_MASTER);
+		position pos4 = new position(4, positionName.PM);
+		System.out.println(pos1.positionOut());
+		System.out.println(pos2.positionOut());
+		System.out.println(pos3.positionOut());
+		System.out.println(pos4.positionOut());
+		
+		
+	}
+
+}

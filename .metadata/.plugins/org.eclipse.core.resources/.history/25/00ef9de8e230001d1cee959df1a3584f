@@ -1,0 +1,8 @@
+package Assignment_1;
+
+public class department {
+	private int departmentID;
+	private String departmentName;
+	
+	
+}
