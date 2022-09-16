@@ -1,2 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="Assignment_1.department"/>
+    <fullyQualifiedTypeName name="Assignment_1.position"/>
+    <fullyQualifiedTypeName name="Assignment_1.position.positionName"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="Assignment_1.typeQuestion"/>
+    <fullyQualifiedTypeName name="Assignment_1.typeQuestion.TypeName"/>
+    <fullyQualifiedTypeName name="Assignment_1.categoryQuestion"/>
+    <fullyQualifiedTypeName name="Assignment_1.categoryQuestion.CategoryName"/>
+    <fullyQualifiedTypeName name="java.time.LocalDate"/>
+    <fullyQualifiedTypeName name="Assignment2.group"/>
+    <fullyQualifiedTypeName name="javax.lang.model.element.VariableElement"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="java.lang.StringIndexOutOfBoundsException"/>
+    <fullyQualifiedTypeName name="Assignment2.account"/>
+    <fullyQualifiedTypeName name="javax.sound.midi.Soundbank"/>
+    <fullyQualifiedTypeName name="Assignment2.department"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="java.lang.StackTraceElement"/>
+</qualifiedTypeNameHistroy>
