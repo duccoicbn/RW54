@@ -1,9 +1,9 @@
 package Assignment2;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.Iterator;
 
-import javax.lang.model.element.VariableElement;
-import javax.sound.midi.Soundbank;
 
 import Assignment2.position.positionName;
 import Assignment2.typeQuestion.TypeName;
@@ -32,25 +32,25 @@ public class main {
 //		System.out.println(pos4.toString());
 		
 		account acc1 = new account(1, "admin@gmail.com", "Username1", "Fullname1", dep4, pos4,
-									LocalDate.of(2020, 12, 23));
-		account acc2 = new account(2, "Email2@gmail.com", "Username2", "Fullname2", dep1, pos4, LocalDate.now());
-		account acc3 = new account(3, "Email3@gmail.com", "Username2", "Fullname3", dep2, pos3, LocalDate.now());
-		account acc4 = new account(4, "Email4@gmail.com", "Username2", "Fullname4", dep3, pos1, LocalDate.now());
+									new Date());
+		account acc2 = new account(2, "Email2@gmail.com", "Username2", "Fullname2", dep1, pos4, new Date());
+		account acc3 = new account(3, "Email3@gmail.com", "Username2", "Fullname3", dep2, pos3, new Date());
+		account acc4 = new account(4, "Email4@gmail.com", "Username2", "Fullname4", dep3, pos1, new Date());
 		
 //		System.out.println(acc1.toString());
 		
 		
 		
-		group group1 = new group(1, "Testing System", acc3, LocalDate.now());
-		group group2 = new group(2, "Development", acc1, LocalDate.now());
-		group group3 = new group(3, "VTI Sale 01", acc2, LocalDate.now());
-		group group4 = new group(4, "Management", acc4, LocalDate.now());
+		group group1 = new group(1, "Testing System", acc3, new Date());
+		group group2 = new group(2, "Development", acc1, new Date());
+		group group3 = new group(3, "VTI Sale 01", acc2, new Date());
+		group group4 = new group(4, "Management", acc4, new Date());
 //		System.out.println(group1.toString());
 		
-		groupAccount groupAccount1 = new groupAccount(group1, new account[] { acc1, acc2 }, LocalDate.now());
-		groupAccount groupAccount2 = new groupAccount(group2, new account[] { acc1, acc2, acc3 }, LocalDate.now());
-		groupAccount groupAccount3 = new groupAccount(group3, new account[] { acc1, acc3 }, LocalDate.now());
-		groupAccount groupAccount4 = new groupAccount(group4, new account[] { acc1, acc2, acc3, acc4 }, LocalDate.now());
+		groupAccount groupAccount1 = new groupAccount(group1, new account[] { acc1, acc2 }, new Date());
+		groupAccount groupAccount2 = new groupAccount(group2, new account[] { acc1, acc2, acc3 }, new Date());
+		groupAccount groupAccount3 = new groupAccount(group3, new account[] { acc1, acc3 }, new Date());
+		groupAccount groupAccount4 = new groupAccount(group4, new account[] { acc1, acc2, acc3, acc4 }, new Date());
 //		System.out.println(groupAccount1.toString());
 		
 		typeQuestion typeQuestion1 = new typeQuestion(1, TypeName.ESSAY);
@@ -82,12 +82,12 @@ public class main {
 		answer answer8 = new answer(8, "Tra loi 08", question5, true);
 //		System.out.println(answer1.toString());
 		
-		exam exam1 = new exam(1, "VTIQ001", "Đề thi C#", categoryQuestion1, 60, acc4, LocalDate.now());
-		exam exam2 = new exam(2, "VTIQ002", "Đề thi PHP", categoryQuestion2, 120, acc3, LocalDate.now());
-		exam exam3 = new exam(3, "VTIQ003", "Đề thi .Net", categoryQuestion3, 90, acc2, LocalDate.now());
-		exam exam4 = new exam(4, "VTIQ004", "Đề thi Java", categoryQuestion5, 60, acc1, LocalDate.now());
-		exam exam5 = new exam(5, "VTIQ005", "Đề thi SQL", categoryQuestion4, 90, acc2, LocalDate.now());
-		exam exam6 = new exam(6, "VTIQ006", "Đề thi C#", categoryQuestion3, 120, acc1, LocalDate.now());
+		exam exam1 = new exam(1, "VTIQ001", "Đề thi C#", categoryQuestion1, 60, acc4, new Date());
+		exam exam2 = new exam(2, "VTIQ002", "Đề thi PHP", categoryQuestion2, 120, acc3, new Date());
+		exam exam3 = new exam(3, "VTIQ003", "Đề thi .Net", categoryQuestion3, 90, acc2, new Date());
+		exam exam4 = new exam(4, "VTIQ004", "Đề thi Java", categoryQuestion5, 60, acc1, new Date());
+		exam exam5 = new exam(5, "VTIQ005", "Đề thi SQL", categoryQuestion4, 90, acc2, new Date());
+		exam exam6 = new exam(6, "VTIQ006", "Đề thi C#", categoryQuestion3, 120, acc1, new Date());
 //		System.out.println(exam1.toString());
 		
 		ExamQuestion examQuestion1 = new ExamQuestion(exam1, question4);
@@ -285,6 +285,16 @@ public class main {
 				System.out.println("Department Name: " + accounts[i].getDepartment().getDepartmentName());
 				i++;
 			} while (i < accounts.length);
+//			Question 6 / Exercise2:
+//			In ra thông tin account (như Question 8 phần FOREACH) theo định dạng
+//			table (giống trong Database)
+			System.out.printf("Question 6 Exercise 2\n");
+			for (account account : accounts) {
+				System.out.printf("\nEmail: " + account.getEmail());
+				System.out.printf("\nFullName: " + account.getFullName());
+				System.out.printf("\nDepartment: " + account.getDepartment().getDepartmentName());
+			}
+			
 	}
 
 }

@@ -1,0 +1,18 @@
+package Assignment2;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class Exercise2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+//		Question 1:
+//		Khai báo 1 số nguyên = 5 và sử dụng lệnh System out printf để in ra số
+//		nguyên đó
+		System.out.println("----- Question 1 --------");
+		int x = 5;
+		System.out.printf("%d%n", x);
+	}
+
+}

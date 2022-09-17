@@ -1,13 +1,13 @@
 package Assignment2;
-import java.time.LocalDate;
+import java.util.Date;
 
 public class group {
 	private int id;
 	private String name;
 	private account creator;
-	private LocalDate createDate;
+	private Date createDate;
 
-	public group(int id, String name, account creator, LocalDate createDate) {
+	public group(int id, String name, account creator, Date createDate) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -39,11 +39,11 @@ public class group {
 		this.creator = creator;
 	}
 
-	public LocalDate getCreateDate() {
+	public Date getCreateDate() {
 		return createDate;
 	}
 
-	public void setCreateDate(LocalDate createDate) {
+	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
 	public String toString() {

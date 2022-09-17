@@ -1,11 +1,11 @@
 package Assignment2;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.Arrays;
 public class groupAccount {
 	private group id;
 	protected account[] account;
-	private LocalDate joinDate;
-	public groupAccount(group id, account[] account, LocalDate joinDate) {
+	private Date joinDate;
+	public groupAccount(group id, account[] account, Date joinDate) {
 		super();
 		this.id = id;
 		this.account = account;
@@ -23,10 +23,10 @@ public class groupAccount {
 	public void setAccount(account[] account) {
 		this.account = account;
 	}
-	public LocalDate getJoinDate() {
+	public Date getJoinDate() {
 		return joinDate;
 	}
-	public void setJoinDate(LocalDate joinDate) {
+	public void setJoinDate(Date joinDate) {
 		this.joinDate = joinDate;
 	}
 	public String toString() {

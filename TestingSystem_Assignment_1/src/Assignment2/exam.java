@@ -1,5 +1,5 @@
 package Assignment2;
-import java.time.LocalDate;
+import java.util.Date;
 
 public class exam {
 	private int id;
@@ -8,9 +8,9 @@ public class exam {
 	private categoryQuestion categoryQuestion;
 	private int Duration;
 	private account creator;
-	private LocalDate createDate;
+	private Date createDate;
 	public exam(int id, String code, String title, categoryQuestion categoryQuestion, int duration, account creator,
-			LocalDate createDate) {
+			Date createDate) {
 		super();
 		this.id = id;
 		this.code = code;
@@ -56,10 +56,10 @@ public class exam {
 	public void setCreator(account creator) {
 		this.creator = creator;
 	}
-	public LocalDate getCreateDate() {
+	public Date getCreateDate() {
 		return createDate;
 	}
-	public void setCreateDate(LocalDate createDate) {
+	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
 	public String toString() {

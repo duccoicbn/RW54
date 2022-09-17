@@ -1,5 +1,6 @@
 package Assignment2;
 import java.time.LocalDate;
+import java.util.Date;
 
 public class account {
 	private int id;
@@ -8,10 +9,11 @@ public class account {
 	private String fullName;
 	private department department;
 	private position position;
-	private LocalDate createDate;
+	private Date createDate;
 	protected group[] groups;
+	public account() {}
 	public account(int id, String email, String userName, String fullName, department department, position position,
-			LocalDate createDate) {
+			Date createDate) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -63,10 +65,10 @@ public class account {
 	public void setPosition(position position) {
 		this.position = position;
 	}
-	public LocalDate getCreateDate() {
+	public Date getCreateDate() {
 		return createDate;
 	}
-	public void setCreateDate(LocalDate createDate) {
+	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
 	public String toString() {

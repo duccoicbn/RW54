@@ -4,9 +4,15 @@ public class department {
 	private int departmentID;
 	private String departmentName;
 	
+	
+	
 	public department(int departmentID, String departmentName) {
 		this.departmentID = departmentID;
 		this.departmentName = departmentName;
+	}
+
+	public department() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public int getDepartmentID() {
